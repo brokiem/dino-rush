@@ -1,6 +1,15 @@
 name: Build Godot Project
 on: push
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+  
 env:
   GODOT_VERSION: 4.1.2
   EXPORT_NAME: DinoRush
@@ -27,7 +36,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: windows
+          name: $EXPORT_NAME-windows
           path: build/windows
 
   export-linux:
@@ -51,7 +60,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: linux
+          name: $EXPORT_NAME-linux
           path: build/linux
 
   export-web:
@@ -75,16 +84,25 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: web
+          name: $EXPORT_NAME-web
           path: build/web
       - name: Install rsync
         run: |
           apt-get update && apt-get install -y rsync
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
+          # Upload dist repository
+          path: './build/web'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        
 
   export-mac:
     name: Mac Export
@@ -107,5 +125,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: mac
+          name: $EXPORT_NAME-mac
           path: build/mac
