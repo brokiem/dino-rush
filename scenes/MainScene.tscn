@@ -1,0 +1,335 @@
+[gd_scene load_steps=32 format=3 uid="uid://8a8x8nr0fvb"]
+
+[ext_resource type="Script" path="res://scenes/MainScene.gd" id="1_ln126"]
+[ext_resource type="Texture2D" uid="uid://bncd2kjmrqu8j" path="res://assets/grasslands/Background parts/1 - Foreground_scenery.png" id="2_7gad4"]
+[ext_resource type="PackedScene" uid="uid://dpd32s4nltf05" path="res://scenes/DinoScene.tscn" id="2_viqvr"]
+[ext_resource type="Texture2D" uid="uid://pal0lo4661s1" path="res://assets/grasslands/Background parts/2 - Hills.png" id="3_2n4ky"]
+[ext_resource type="PackedScene" uid="uid://bojq8cy8lvvmp" path="res://scenes/TerrainScene.tscn" id="3_xx1j1"]
+[ext_resource type="Texture2D" uid="uid://dspuj322r6qff" path="res://assets/grasslands/Background parts/3 - Cloud_cover_1.png" id="4_f77nl"]
+[ext_resource type="Texture2D" uid="uid://bu8cd5ub574mw" path="res://assets/grasslands/Background parts/4 - Cloud_cover_2.png" id="5_kx8mn"]
+[ext_resource type="Texture2D" uid="uid://1cf1a8q7mqgp" path="res://assets/grasslands/Background parts/5 - Sky_color.png" id="6_l2rgn"]
+[ext_resource type="FontFile" uid="uid://d3t0qd3p4lqop" path="res://assets/mineglyph-faithful.ttf" id="9_tiq2m"]
+
+[sub_resource type="Theme" id="Theme_812dw"]
+default_font = ExtResource("9_tiq2m")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_68f7g"]
+default_font = ExtResource("9_tiq2m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8pm0"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.980392)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqp87"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.529412, 0.529412, 0.529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f4mr"]
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3748t"]
+bg_color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[sub_resource type="Theme" id="Theme_5vjwy"]
+default_font = ExtResource("9_tiq2m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6d1r"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3411"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.980392)
+
+[sub_resource type="Theme" id="Theme_3yi2s"]
+default_font = ExtResource("9_tiq2m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k26ro"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.980392)
+
+[sub_resource type="Theme" id="Theme_hs3l8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p05of"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7y3v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gcn6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y7p1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygsg1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_463f0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1kac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03475"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4ggo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_laqm1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ln126")
+
+[node name="Dino" parent="." instance=ExtResource("2_viqvr")]
+position = Vector2(-168, 39)
+
+[node name="Terrain" parent="." instance=ExtResource("3_xx1j1")]
+position = Vector2(-201, 48)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+follow_viewport_scale = 0.5
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-192, -151)
+motion_mirroring = Vector2(285, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-10, 7)
+texture = ExtResource("6_l2rgn")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 208)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-192, -151)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(285, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-10, 7)
+texture = ExtResource("5_kx8mn")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 485, 208)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-192, -151)
+motion_scale = Vector2(0.05, 1)
+motion_mirroring = Vector2(285, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer3"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-10, 7)
+texture = ExtResource("4_f77nl")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 485, 208)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-192, -151)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(285, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer4"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-10, 7)
+texture = ExtResource("3_2n4ky")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 485, 208)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-192, -151)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(285, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer5"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-10, 7)
+texture = ExtResource("2_7gad4")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 485, 208)
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -52.0
+offset_right = 92.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_812dw")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 4
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = 3.0
+offset_right = 92.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_68f7g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8pm0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqp87")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4f4mr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3748t")
+text = "Click to restart"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 210.0
+offset_top = 64.0
+offset_right = 321.0
+offset_bottom = 97.0
+theme = SubResource("Theme_5vjwy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6d1r")
+text = "0"
+fit_content = true
+scroll_active = false
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 200.0
+offset_bottom = 97.0
+theme = SubResource("Theme_5vjwy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6d1r")
+text = "HI 0"
+fit_content = true
+scroll_active = false
+
+[node name="FPSLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -201.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 97.0
+grow_horizontal = 0
+size_flags_vertical = 10
+theme = SubResource("Theme_5vjwy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6d1r")
+text = "FPS: 0"
+fit_content = true
+scroll_active = false
+
+[node name="StartLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = 27.0
+offset_right = 112.5
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5vjwy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3411")
+text = "Press Space to start"
+fit_content = true
+scroll_active = false
+
+[node name="InstructionLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -71.0
+offset_right = 240.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3yi2s")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_k26ro")
+text = "Controls
+You can use \"SPACE\" or \"ARROW UP\" key to jump
+You can also use \"ARROW DOWN\" key to sneak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JumpButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -578.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_hs3l8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p05of")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u7y3v")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2gcn6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0y7p1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ygsg1")
+action_mode = 0
+flat = true
+
+[node name="SneakButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 571.0
+grow_vertical = 2
+theme = SubResource("Theme_hs3l8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_463f0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w1kac")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_03475")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a4ggo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_laqm1")
+action_mode = 0
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="." method="_OnRestartButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/JumpButton" to="." method="_on_jump_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/SneakButton" to="." method="_on_sneak_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/SneakButton" to="." method="_on_sneak_button_button_up"]

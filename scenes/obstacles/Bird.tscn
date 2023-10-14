@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7nsnj7thp0ul"]
+
+[ext_resource type="Script" path="res://scenes/obstacles/Bird.gd" id="1_68vmv"]
+[ext_resource type="Texture2D" uid="uid://0lmf5uxcq4bj" path="res://assets/BirdSprite.png" id="2_egtj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns8rc"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2r0s"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eytmv"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0obo7"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6m1g"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iasjg"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7nqr"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ppd1"]
+atlas = ExtResource("2_egtj6")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kmpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns8rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2r0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eytmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0obo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6m1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iasjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7nqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ppd1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jss0d"]
+size = Vector2(16, 7)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_68vmv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(16.75, -24)
+scale = Vector2(0.0750001, 0.2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+texture_filter = 1
+position = Vector2(8, -21)
+sprite_frames = SubResource("SpriteFrames_1kmpc")
+autoplay = "default"
+frame_progress = 0.85385
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, -20.5)
+shape = SubResource("RectangleShape2D_jss0d")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnExitScreen"]
