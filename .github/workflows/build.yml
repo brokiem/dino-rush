@@ -9,7 +9,7 @@ permissions:
 concurrency:
   group: 'pages'
   cancel-in-progress: true
-  
+
 env:
   GODOT_VERSION: 4.1.2
   EXPORT_NAME: DinoRush
@@ -36,7 +36,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: $EXPORT_NAME-windows
+          name: ${{ env.EXPORT_NAME }}-windows
           path: build/windows
 
   export-linux:
@@ -60,7 +60,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: $EXPORT_NAME-linux
+          name: ${{ env.EXPORT_NAME }}-linux
           path: build/linux
 
   export-web:
@@ -81,22 +81,15 @@ jobs:
         run: |
           mkdir -v -p build/web
           godot --headless -v --export-release "web" ./build/web/index.html
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: $EXPORT_NAME-web
-          path: build/web
-      - name: Install rsync
-        run: |
-          apt-get update && apt-get install -y rsync
-          
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: Upload artifact
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
+          name: ${{ env.EXPORT_NAME }}-web
           path: './build/web'
 
       - name: Deploy to GitHub Pages
@@ -125,5 +118,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: $EXPORT_NAME-mac
+          name: ${{ env.EXPORT_NAME }}-mac
           path: build/mac
