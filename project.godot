@@ -19,11 +19,6 @@ config/icon="res://icon.svg"
 
 project/assembly_name="DinoRush"
 
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
 [gui]
 
 theme/default_font_subpixel_positioning=0
@@ -50,3 +45,5 @@ sneak={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
