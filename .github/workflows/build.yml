@@ -4,7 +4,7 @@ on: push
 env:
   GODOT_VERSION: 4.1.2
   EXPORT_NAME: DinoRush
-  PROJECT_PATH: dino-rush
+  PROJECT_PATH: .
   
 jobs:
   export-windows:
